@@ -1,0 +1,266 @@
+@layer base {
+  :root {
+    --primary: var(--color-blue-600);
+    --primary-foreground: var(--color-blue-50);
+    --sidebar-primary: var(--color-blue-600);
+    --sidebar-primary-foreground: var(--color-blue-50);
+    --chart-1: var(--color-blue-300);
+    --chart-2: var(--color-green-400);
+    --chart-3: var(--color-amber-400);
+    --chart-4: var(--color-red-400);
+    --chart-5: var(--color-purple-400);
+    --radius: 0.65rem;
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.235 0.015 65);
+    --card: oklch(0.98 0.001 286.375);
+    --card-foreground: oklch(0.235 0.015 65);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.235 0.015 65);
+    --secondary: oklch(0.98 0.001 286.375);
+    --secondary-foreground: oklch(0.4 0.015 65);
+    --muted: oklch(0.967 0.001 286.375);
+    --muted-foreground: oklch(0.552 0.016 285.938);
+    --accent: oklch(0.623 0.214 259.815);
+    --accent-foreground: oklch(1 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.985 0 0);
+    --border: oklch(0.92 0.004 286.32);
+    --input: oklch(0.92 0.004 286.32);
+    --ring: oklch(0.623 0.214 259.815);
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.235 0.015 65);
+    --sidebar-accent: oklch(0.967 0.001 286.375);
+    --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
+    --sidebar-border: oklch(0.92 0.004 286.32);
+    --sidebar-ring: oklch(0.623 0.214 259.815);
+  }
+
+  .dark {
+    --primary: var(--color-blue-500);
+    --primary-foreground: var(--color-blue-50);
+    --sidebar-primary: var(--color-blue-500);
+    --sidebar-primary-foreground: var(--color-blue-50);
+    --background: oklch(0.141 0.005 285.823);
+    --foreground: oklch(0.85 0.005 65);
+    --card: oklch(0.21 0.006 285.885);
+    --card-foreground: oklch(0.85 0.005 65);
+    --popover: oklch(0.21 0.006 285.885);
+    --popover-foreground: oklch(0.85 0.005 65);
+    --secondary: oklch(0.24 0.006 286.033);
+    --secondary-foreground: oklch(0.7 0.005 65);
+    --muted: oklch(0.274 0.006 286.033);
+    --muted-foreground: oklch(0.705 0.015 286.067);
+    --accent: oklch(0.488 0.243 264.376);
+    --accent-foreground: oklch(0.92 0.005 65);
+    --destructive: oklch(0.704 0.191 22.216);
+    --destructive-foreground: oklch(0.985 0 0);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.488 0.243 264.376);
+    --chart-1: var(--color-blue-400);
+    --chart-2: var(--color-green-400);
+    --chart-3: var(--color-amber-400);
+    --chart-4: var(--color-red-400);
+    --chart-5: var(--color-purple-400);
+    --sidebar: oklch(0.21 0.006 285.885);
+    --sidebar-foreground: oklch(0.85 0.005 65);
+    --sidebar-accent: oklch(0.274 0.006 286.033);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.488 0.243 264.376);
+  }
+}
+
+@layer components {
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   *
+   * This overrides Tailwind's default container behavior to:
+   * - Auto-center content (mx-auto)
+   * - Add responsive horizontal padding
+   * - Set max-width for large screens
+   *
+   * Usage: <div className="container">...</div>
+   *
+   * For custom widths, use max-w-* utilities directly:
+   * <div className="max-w-6xl mx-auto px-4">...</div>
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* 16px - mobile padding */
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* 32px - desktop padding */
+      padding-right: 2rem;
+      max-width: 1280px; /* Standard content width */
+    }
+  }
+}
+/* Wathiqly Custom Components */
+@layer components {
+  .badge-trusted {
+    @apply inline-flex items-center gap-1 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold border border-blue-200;
+  }
+
+  .badge-status-pending {
+    @apply inline-flex items-center gap-1 bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-status-completed {
+    @apply inline-flex items-center gap-1 bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-status-disputed {
+    @apply inline-flex items-center gap-1 bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .card-transaction {
+    @apply bg-card text-card-foreground rounded-lg border border-border p-4 hover:shadow-md transition-shadow;
+  }
+
+  .rating-display {
+    @apply flex items-center gap-1;
+  }
+
+  .rating-display .star {
+    @apply text-amber-400;
+  }
+
+  /* Transaction Status */
+  .status-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .status-pending {
+    @apply bg-amber-100 text-amber-800;
+  }
+
+  .status-completed {
+    @apply bg-green-100 text-green-800;
+  }
+
+  .status-cancelled {
+    @apply bg-red-100 text-red-800;
+  }
+
+  .status-disputed {
+    @apply bg-red-200 text-red-900;
+  }
+
+  /* Product Card */
+  .product-card {
+    @apply bg-card rounded-lg border border-border overflow-hidden hover:shadow-lg transition-shadow;
+  }
+
+  .product-image {
+    @apply w-full h-48 object-cover bg-muted;
+  }
+
+  .product-content {
+    @apply p-4;
+  }
+
+  /* Escrow Timeline */
+  .escrow-timeline {
+    @apply space-y-4;
+  }
+
+  .timeline-item {
+    @apply flex gap-4;
+  }
+
+  .timeline-marker {
+    @apply w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0;
+  }
+
+  .timeline-marker.completed {
+    @apply bg-green-100 text-green-700;
+  }
+
+  .timeline-marker.pending {
+    @apply bg-amber-100 text-amber-700;
+  }
+
+  .timeline-marker.active {
+    @apply bg-blue-100 text-blue-700 ring-2 ring-blue-300;
+  }
+
+  /* Form Elements */
+  .form-group {
+    @apply space-y-2;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-foreground;
+  }
+
+  .form-input {
+    @apply w-full px-4 py-2 rounded-lg border border-input bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent;
+  }
+
+  .form-textarea {
+    @apply w-full px-4 py-2 rounded-lg border border-input bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent resize-none;
+  }
+
+  /* Loading States */
+  .skeleton {
+    @apply animate-pulse bg-muted rounded-lg;
+  }
+
+  .skeleton-text {
+    @apply animate-pulse bg-muted rounded-lg h-4 w-full;
+  }
+
+  .skeleton-avatar {
+    @apply animate-pulse bg-muted rounded-full h-10 w-10;
+  }
+
+  /* Empty States */
+  .empty-state {
+    @apply flex flex-col items-center justify-center py-12 text-center;
+  }
+
+  .empty-state-icon {
+    @apply w-16 h-16 text-muted-foreground mb-4;
+  }
+
+  .empty-state-title {
+    @apply text-lg font-semibold text-foreground mb-2;
+  }
+
+  .empty-state-description {
+    @apply text-sm text-muted-foreground;
+  }
+}
+
+/* Privacy Mode Styles */
+.privacy-mode .balance-amount {
+  filter: blur(8px);
+  transition: filter 0.3s ease;
+}
+
+.privacy-mode .balance-amount:hover {
+  filter: blur(0);
+}
+
+/* Arabic Font Support */
+.font-arabic {
+  font-family: 'Cairo', sans-serif;
+}

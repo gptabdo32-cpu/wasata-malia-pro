@@ -1,0 +1,63 @@
+{
+  "include": [
+    "apps/web/src/**/*",
+    "apps/api/src/**/*",
+    "packages/shared/**/*",
+    "packages/contracts/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "**/*.test.ts",
+    "src/tests/**/*",
+    "tests/**/*"
+  ],
+  "compilerOptions": {
+    "incremental": true,
+    "tsBuildInfoFile": "./node_modules/typescript/tsbuildinfo",
+    "noEmit": true,
+    "module": "ESNext",
+    "strict": true,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "strictNullChecks": true,
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable"
+    ],
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./apps/web/src/*"
+      ],
+      "@shared": [
+        "./packages/shared/index.ts"
+      ],
+      "@shared/*": [
+        "./packages/shared/*"
+      ],
+      "@contracts/*": [
+        "./packages/contracts/*"
+      ],
+      "@domain/*": [
+        "./apps/api/src/domain/*"
+      ],
+      "@application/*": [
+        "./apps/api/src/application/*"
+      ],
+      "@infrastructure/*": [
+        "./apps/api/src/infrastructure/*"
+      ],
+      "@interface/*": [
+        "./apps/api/src/interface/*"
+      ]
+    }
+  }
+}
